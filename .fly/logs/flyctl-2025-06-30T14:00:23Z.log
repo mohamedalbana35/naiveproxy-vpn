@@ -1,0 +1,1305 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (546.12ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG Starting task manager
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG {
+  "query": "query { viewer { ... on User { id email enablePaidHobby } ... on Macaroon { email } } }",
+  "variables": null
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (598.97ms)
+
+DEBUG {
+  "data": {
+    "apphostissues": {
+      "hostIssues": {
+        "nodes": []
+      }
+    }
+  }
+}
+
+DEBUG <-- 200 https://api.fly.io/graphql (222.13ms)
+
+DEBUG {
+  "data": {
+    "viewer": {
+      "id": "6xy84ZMn8AxvgTLj9xOa",
+      "email": "mohamedalbana35@gmail.com",
+      "enablePaidHobby": true
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query ($appName: String!) { appcompact:app(name: $appName) { id name hostname deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (329.09ms)
+
+DEBUG {
+  "data": {
+    "appcompact": {
+      "id": "vpn-elbana",
+      "name": "vpn-elbana",
+      "hostname": "vpn-elbana.fly.dev",
+      "deployed": true,
+      "network": "",
+      "status": "suspended",
+      "appUrl": "https://137.66.18.206",
+      "platformVersion": "machines",
+      "postgresAppRole": null,
+      "organization": {
+        "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+        "internalNumericId": "1155542",
+        "slug": "personal",
+        "paidPlan": true
+      }
+    }
+  }
+}
+
+DEBUG trying remote docker daemon
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateBuild ($input: CreateBuildInput!) {\n\tcreateBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderType": "depot.dev",
+      "clientMutationId": "",
+      "imageOpts": {
+        "buildArgs": null,
+        "buildPacks": null,
+        "builder": "",
+        "builtIn": "",
+        "builtInSettings": null,
+        "dockerfilePath": "",
+        "extraBuildArgs": null,
+        "imageLabel": "",
+        "imageRef": "zydou/naiveproxy:x86_64",
+        "noCache": false,
+        "publish": true,
+        "tag": "",
+        "target": ""
+      },
+      "machineId": "",
+      "strategiesAvailable": [
+        "Local Image Reference",
+        "Remote Image Reference"
+      ]
+    }
+  },
+  "operationName": "CreateBuild"
+}
+
+DEBUG {0x4000afde30}
+DEBUG <-- 200 https://api.fly.io/graphql (258.45ms)
+
+DEBUG {
+  "data": {
+    "createBuild": {
+      "id": "6535907",
+      "status": "started"
+    }
+  }
+}
+
+DEBUG Trying 'Local Image Reference' strategy
+
+DEBUG local docker daemon not available, skipping
+DEBUG result image:<nil> error:<nil>
+
+DEBUG Trying 'Remote Image Reference' strategy
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query ($appName: String!, $imageRef: String!) { app(name: $appName) { id image(ref: $imageRef) { id digest ref compressedSize: compressedSizeFull } } }",
+  "variables": {
+    "appName": "vpn-elbana",
+    "imageRef": "zydou/naiveproxy:x86_64"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (252.61ms)
+
+DEBUG {
+  "data": {
+    "app": {
+      "id": "vpn-elbana",
+      "image": {
+        "id": "img_3xdk4xnm3ye6vgo0",
+        "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+        "ref": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+        "compressedSize": "8084470"
+      }
+    }
+  }
+}
+
+DEBUG result image:docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64@sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb error:<nil>
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation FinishBuild ($input: FinishBuildInput!) {\n\tfinishBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t\twallclockTimeMs\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "buildId": "6535907",
+      "builderMeta": {
+        "builderType": "",
+        "buildkitEnabled": false,
+        "dockerVersion": "",
+        "platform": "",
+        "remoteAppName": "",
+        "remoteMachineId": ""
+      },
+      "clientMutationId": "",
+      "finalImage": {
+        "id": "img_3xdk4xnm3ye6vgo0",
+        "sizeBytes": 8084470,
+        "tag": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64"
+      },
+      "logs": "",
+      "machineId": "",
+      "status": "completed",
+      "strategiesAttempted": [
+        {
+          "error": "",
+          "note": "local docker daemon not available, skipping",
+          "result": "failed",
+          "strategy": "Local Image Reference"
+        },
+        {
+          "error": "",
+          "note": "",
+          "result": "success",
+          "strategy": "Remote Image Reference"
+        }
+      ],
+      "timings": {
+        "buildAndPushMs": 260,
+        "buildMs": 260,
+        "builderInitMs": -1,
+        "contextBuildMs": -1,
+        "imageBuildMs": -1,
+        "pushMs": -1
+      }
+    }
+  },
+  "operationName": "FinishBuild"
+}
+
+DEBUG {0x40008f21b0}
+DEBUG <-- 200 https://api.fly.io/graphql (313.49ms)
+
+DEBUG {
+  "data": {
+    "finishBuild": {
+      "id": "6535907",
+      "status": "completed",
+      "wallclockTimeMs": 524
+    }
+  }
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines (399.54ms)
+
+DEBUG [
+  {
+    "id": "4d896001fe4758",
+    "name": "wandering-leaf-9876",
+    "state": "stopped",
+    "region": "fra",
+    "instance_id": "01JZ0HTJJFDTCTM5D1BPF42KV2",
+    "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+    "config": {
+      "env": {
+        "FLY_PROCESS_GROUP": "app"
+      },
+      "init": {},
+      "guest": {
+        "cpu_kind": "shared",
+        "cpus": 1,
+        "memory_mb": 256
+      },
+      "metadata": {
+        "fly_flyctl_version": "2025.6.30-dev.1751291608",
+        "fly_platform_version": "v2",
+        "fly_process_group": "app",
+        "fly_release_id": "p2xOXzMKKYnx1Cz7gYOYxzRZq",
+        "fly_release_version": "18"
+      },
+      "services": [
+        {
+          "protocol": "tcp",
+          "internal_port": 443,
+          "ports": [
+            {
+              "port": 443
+            }
+          ],
+          "force_instance_key": null
+        }
+      ],
+      "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+      "restart": {
+        "policy": "on-failure",
+        "max_retries": 10
+      }
+    },
+    "incomplete_config": null,
+    "image_ref": {
+      "registry": "docker-hub-mirror.fly.io",
+      "repository": "zydou/naiveproxy",
+      "tag": "x86_64",
+      "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+      "labels": null
+    },
+    "created_at": "2025-06-30T11:55:50Z",
+    "updated_at": "2025-06-30T13:54:44Z",
+    "events": [
+      {
+        "id": "01JZ0HWSF58AQ6Q80D1BC4WMT1",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": false,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T13:54:44.152Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751291684325
+      },
+      {
+        "id": "01JZ0HWR5GNXW04N99850WCPN6",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751291682992
+      },
+      {
+        "id": "01JZ0HWQBDTWE7AX34RH6H1R1F",
+        "type": "start",
+        "status": "starting",
+        "source": "flyd",
+        "timestamp": 1751291682157
+      },
+      {
+        "id": "01JZ0HVSP6AP4T0RZRCJC7WS90",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": true,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T13:54:11.628Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751291651782
+      },
+      {
+        "id": "01JZ0HVRD9FJZW8D2V1AM3RENE",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751291650473
+      }
+    ],
+    "host_status": "ok"
+  }
+]
+
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateRelease ($input: CreateReleaseInput!) {\n\tcreateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t\tversion\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appId": "vpn-elbana",
+      "buildId": "6535907",
+      "clientMutationId": "",
+      "definition": {
+        "app": "vpn-elbana",
+        "build": {
+          "image": "zydou/naiveproxy:x86_64"
+        },
+        "services": [
+          {
+            "protocol": "tcp",
+            "internal_port": 443,
+            "ports": [
+              {
+                "port": 443
+              }
+            ]
+          }
+        ]
+      },
+      "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+      "platformVersion": "machines",
+      "strategy": "ROLLING"
+    }
+  },
+  "operationName": "CreateRelease"
+}
+
+DEBUG {0x4000816c90}
+DEBUG <-- 200 https://api.fly.io/graphql (416.15ms)
+
+DEBUG {
+  "data": {
+    "createRelease": {
+      "release": {
+        "id": "7pGPxgX11jYG2T4n50jePXjq",
+        "version": 19
+      }
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation UpdateRelease ($input: UpdateReleaseInput!) {\n\tupdateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "clientMutationId": "",
+      "metadata": null,
+      "releaseId": "7pGPxgX11jYG2T4n50jePXjq",
+      "status": "running"
+    }
+  },
+  "operationName": "UpdateRelease"
+}
+
+DEBUG {0x40004f3620}
+DEBUG <-- 200 https://api.fly.io/graphql (279.47ms)
+
+DEBUG {
+  "data": {
+    "updateRelease": {
+      "release": {
+        "id": "7pGPxgX11jYG2T4n50jePXjq"
+      }
+    }
+  }
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines (138.83ms)
+
+DEBUG [
+  {
+    "id": "4d896001fe4758",
+    "name": "wandering-leaf-9876",
+    "state": "stopped",
+    "region": "fra",
+    "instance_id": "01JZ0HTJJFDTCTM5D1BPF42KV2",
+    "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+    "config": {
+      "env": {
+        "FLY_PROCESS_GROUP": "app"
+      },
+      "init": {},
+      "guest": {
+        "cpu_kind": "shared",
+        "cpus": 1,
+        "memory_mb": 256
+      },
+      "metadata": {
+        "fly_flyctl_version": "2025.6.30-dev.1751291608",
+        "fly_platform_version": "v2",
+        "fly_process_group": "app",
+        "fly_release_id": "p2xOXzMKKYnx1Cz7gYOYxzRZq",
+        "fly_release_version": "18"
+      },
+      "services": [
+        {
+          "protocol": "tcp",
+          "internal_port": 443,
+          "ports": [
+            {
+              "port": 443
+            }
+          ],
+          "force_instance_key": null
+        }
+      ],
+      "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+      "restart": {
+        "policy": "on-failure",
+        "max_retries": 10
+      }
+    },
+    "incomplete_config": null,
+    "image_ref": {
+      "registry": "docker-hub-mirror.fly.io",
+      "repository": "zydou/naiveproxy",
+      "tag": "x86_64",
+      "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+      "labels": null
+    },
+    "created_at": "2025-06-30T11:55:50Z",
+    "updated_at": "2025-06-30T13:54:44Z",
+    "events": [
+      {
+        "id": "01JZ0HWSF58AQ6Q80D1BC4WMT1",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": false,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T13:54:44.152Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751291684325
+      },
+      {
+        "id": "01JZ0HWR5GNXW04N99850WCPN6",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751291682992
+      },
+      {
+        "id": "01JZ0HWQBDTWE7AX34RH6H1R1F",
+        "type": "start",
+        "status": "starting",
+        "source": "flyd",
+        "timestamp": 1751291682157
+      },
+      {
+        "id": "01JZ0HVSP6AP4T0RZRCJC7WS90",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": true,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T13:54:11.628Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751291651782
+      },
+      {
+        "id": "01JZ0HVRD9FJZW8D2V1AM3RENE",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751291650473
+      }
+    ],
+    "host_status": "ok"
+  }
+]
+
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease?ttl=13000000000
+
+DEBUG <-- 201 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease?ttl=13000000000 (111.32ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "nonce": "5d26c2e43099",
+    "expires_at": -3695452047,
+    "owner": "6dddf20a-a0ab-5d3d-836b-47a3a8acd0e7@tokens.fly.io",
+    "description": "",
+    "version": "01JZ0HTJJFDTCTM5D1BPF42KV2"
+  }
+}
+
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758
+
+DEBUG {
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64"
+  },
+  "region": "fra"
+}
+
+DEBUG {0x4000a8f140}
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758 (1.31s)
+
+DEBUG {
+  "id": "4d896001fe4758",
+  "name": "wandering-leaf-9876",
+  "state": "created",
+  "region": "fra",
+  "instance_id": "01JZ0J78FZK2389J0ZDM7H32D1",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "docker-hub-mirror.fly.io",
+    "repository": "zydou/naiveproxy",
+    "tag": "x86_64",
+    "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+    "labels": null
+  },
+  "created_at": "2025-06-30T11:55:50Z",
+  "updated_at": "2025-06-30T14:00:27Z",
+  "events": [
+    {
+      "id": "01JZ0J78G9YV7QDBETA6W4SWRC",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751292027401
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/wait?instance_id=01JZ0J78FZK2389J0ZDM7H32D1&state=started&timeout=60
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/wait?instance_id=01JZ0J78FZK2389J0ZDM7H32D1&state=stopped&timeout=60
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/wait?instance_id=01JZ0J78FZK2389J0ZDM7H32D1&state=suspended&timeout=60
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/wait?instance_id=01JZ0J78FZK2389J0ZDM7H32D1&state=started&timeout=60 (1.57s)
+
+DEBUG {
+  "ok": true
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/ps
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease?ttl=13
+
+DEBUG <-- 201 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease?ttl=13 (324.51ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "nonce": "5d26c2e43099",
+    "expires_at": 1751292043,
+    "owner": "6dddf20a-a0ab-5d3d-836b-47a3a8acd0e7@tokens.fly.io",
+    "description": "",
+    "version": "01JZ0J78FZK2389J0ZDM7H32D1"
+  }
+}
+
+
+DEBUG got lease on machine 4d896001fe4758: &{success 0x4000aaa0c0  }
+
+DEBUG <-- 500 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/ps (1.01s)
+
+DEBUG {
+  "error": "internal: Get \"http://unix/v1/ps\": EOF"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758 (104.24ms)
+
+DEBUG {
+  "id": "4d896001fe4758",
+  "name": "wandering-leaf-9876",
+  "state": "started",
+  "region": "fra",
+  "instance_id": "01JZ0J78FZK2389J0ZDM7H32D1",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "docker-hub-mirror.fly.io",
+    "repository": "zydou/naiveproxy",
+    "tag": "x86_64",
+    "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+    "labels": null
+  },
+  "created_at": "2025-06-30T11:55:50Z",
+  "updated_at": "2025-06-30T14:00:28Z",
+  "events": [
+    {
+      "id": "01JZ0J79RD5SHHGDGZZ0A866XM",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751292028685
+    },
+    {
+      "id": "01JZ0J78G9YV7QDBETA6W4SWRC",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751292027401
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758 (92.06ms)
+
+DEBUG {
+  "id": "4d896001fe4758",
+  "name": "wandering-leaf-9876",
+  "state": "starting",
+  "region": "fra",
+  "instance_id": "01JZ0J78FZK2389J0ZDM7H32D1",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "docker-hub-mirror.fly.io",
+    "repository": "zydou/naiveproxy",
+    "tag": "x86_64",
+    "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+    "labels": null
+  },
+  "created_at": "2025-06-30T11:55:50Z",
+  "updated_at": "2025-06-30T14:00:30Z",
+  "events": [
+    {
+      "id": "01JZ0J7BRAYP2K4MEDV99WMB3V",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751292030730
+    },
+    {
+      "id": "01JZ0J7BN614QADBP5MTMM4MNA",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T14:00:30.463Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751292030630
+    },
+    {
+      "id": "01JZ0J79RD5SHHGDGZZ0A866XM",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751292028685
+    },
+    {
+      "id": "01JZ0J78G9YV7QDBETA6W4SWRC",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751292027401
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758 (107.62ms)
+
+DEBUG {
+  "id": "4d896001fe4758",
+  "name": "wandering-leaf-9876",
+  "state": "started",
+  "region": "fra",
+  "instance_id": "01JZ0J78FZK2389J0ZDM7H32D1",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "docker-hub-mirror.fly.io",
+    "repository": "zydou/naiveproxy",
+    "tag": "x86_64",
+    "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+    "labels": null
+  },
+  "created_at": "2025-06-30T11:55:50Z",
+  "updated_at": "2025-06-30T14:00:31Z",
+  "events": [
+    {
+      "id": "01JZ0J7CJ86WCGRF0APXGV7B8A",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751292031560
+    },
+    {
+      "id": "01JZ0J7BRAYP2K4MEDV99WMB3V",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751292030730
+    },
+    {
+      "id": "01JZ0J7BN614QADBP5MTMM4MNA",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T14:00:30.463Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751292030630
+    },
+    {
+      "id": "01JZ0J79RD5SHHGDGZZ0A866XM",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751292028685
+    },
+    {
+      "id": "01JZ0J78G9YV7QDBETA6W4SWRC",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751292027401
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758 (127.76ms)
+
+DEBUG {
+  "id": "4d896001fe4758",
+  "name": "wandering-leaf-9876",
+  "state": "starting",
+  "region": "fra",
+  "instance_id": "01JZ0J78FZK2389J0ZDM7H32D1",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:8803:115b:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751292023",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "7pGPxgX11jYG2T4n50jePXjq",
+      "fly_release_version": "19"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "docker-hub-mirror.fly.io/zydou/naiveproxy:x86_64",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "docker-hub-mirror.fly.io",
+    "repository": "zydou/naiveproxy",
+    "tag": "x86_64",
+    "digest": "sha256:44c48f97adba6e47be3649609152cc087f85f3e76aa7957c0d0b541cbcbbbfbb",
+    "labels": null
+  },
+  "created_at": "2025-06-30T11:55:50Z",
+  "updated_at": "2025-06-30T14:00:33Z",
+  "events": [
+    {
+      "id": "01JZ0J7DZTXVCK8TKN01CKDD5K",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751292033018
+    },
+    {
+      "id": "01JZ0J7DW1A4RCT94D6AJHHD5W",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T14:00:32.719Z"
+        },
+        "restart_count": 2
+      },
+      "source": "flyd",
+      "timestamp": 1751292032897
+    },
+    {
+      "id": "01JZ0J7CJ86WCGRF0APXGV7B8A",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751292031560
+    },
+    {
+      "id": "01JZ0J7BRAYP2K4MEDV99WMB3V",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751292030730
+    },
+    {
+      "id": "01JZ0J7BN614QADBP5MTMM4MNA",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T14:00:30.463Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751292030630
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> DELETE https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease (90.55ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "ok": true
+  }
+}
+
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation UpdateRelease ($input: UpdateReleaseInput!) {\n\tupdateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "clientMutationId": "",
+      "metadata": {
+        "post_deployment_info": {
+          "flyctl_version": "2025.6.30-dev.1751292023",
+          "error": "failed to update machine 4d896001fe4758: Unrecoverable error: smoke checks for 4d896001fe4758 failed: the app appears to be crashing"
+        }
+      },
+      "releaseId": "7pGPxgX11jYG2T4n50jePXjq",
+      "status": "failed"
+    }
+  },
+  "operationName": "UpdateRelease"
+}
+
+DEBUG {0x40009ff530}
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/4d896001fe4758/lease?ttl=13
+
+DEBUG <-- 200 https://api.fly.io/graphql (508.63ms)
+
+DEBUG {
+  "data": {
+    "updateRelease": {
+      "release": {
+        "id": "7pGPxgX11jYG2T4n50jePXjq"
+      }
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1.42s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG Task manager done
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []
+DEBUG querying for statuspage incidents resulted to &{[]}

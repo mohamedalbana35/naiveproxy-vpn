@@ -1,0 +1,7 @@
+{
+  "listen": ":443",
+  "proxy": "direct",
+  "users": {
+    "mohamedalbana": "Medo@1298"
+  }
+}

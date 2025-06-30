@@ -1,0 +1,2192 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (517.29ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG Starting task manager
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query { viewer { ... on User { id email enablePaidHobby } ... on Macaroon { email } } }",
+  "variables": null
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (870.08ms)
+
+DEBUG {
+  "data": {
+    "apphostissues": {
+      "hostIssues": {
+        "nodes": []
+      }
+    }
+  }
+}
+
+DEBUG <-- 200 https://api.fly.io/graphql (437.91ms)
+
+DEBUG {
+  "data": {
+    "viewer": {
+      "id": "6xy84ZMn8AxvgTLj9xOa",
+      "email": "mohamedalbana35@gmail.com",
+      "enablePaidHobby": true
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query ($appName: String!) { appcompact:app(name: $appName) { id name hostname deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (455.98ms)
+
+DEBUG {
+  "data": {
+    "appcompact": {
+      "id": "vpn-elbana",
+      "name": "vpn-elbana",
+      "hostname": "vpn-elbana.fly.dev",
+      "deployed": true,
+      "network": "",
+      "status": "suspended",
+      "appUrl": null,
+      "platformVersion": "machines",
+      "postgresAppRole": null,
+      "organization": {
+        "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+        "internalNumericId": "1155542",
+        "slug": "personal",
+        "paidPlan": true
+      }
+    }
+  }
+}
+
+DEBUG trying remote docker daemon
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateBuild ($input: CreateBuildInput!) {\n\tcreateBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderType": "depot.dev",
+      "clientMutationId": "",
+      "imageOpts": {
+        "buildArgs": {},
+        "buildPacks": null,
+        "builder": "",
+        "builtIn": "",
+        "builtInSettings": null,
+        "dockerfilePath": "",
+        "extraBuildArgs": null,
+        "imageLabel": "",
+        "imageRef": "",
+        "noCache": false,
+        "publish": true,
+        "tag": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+        "target": ""
+      },
+      "machineId": "",
+      "strategiesAvailable": [
+        "depot.dev"
+      ]
+    }
+  },
+  "operationName": "CreateBuild"
+}
+
+DEBUG {0x400085bad0}
+DEBUG <-- 200 https://api.fly.io/graphql (471.84ms)
+
+DEBUG {
+  "data": {
+    "createBuild": {
+      "id": "6540464",
+      "status": "started"
+    }
+  }
+}
+
+DEBUG Trying 'depot.dev' strategy
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation EnsureDepotRemoteBuilder ($input: EnsureDepotRemoteBuilderInput!) {\n\tensureDepotRemoteBuilder(input: $input) {\n\t\tbuildId\n\t\tbuildToken\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderScope": "organization",
+      "clientMutationId": null,
+      "organizationId": null,
+      "region": ""
+    }
+  },
+  "operationName": "EnsureDepotRemoteBuilder"
+}
+
+DEBUG {0x4000b4bc50}
+DEBUG <-- 200 https://api.fly.io/graphql (472.31ms)
+
+DEBUG {
+  "data": {
+    "ensureDepotRemoteBuilder": {
+      "buildId": "dhvjthw7h9",
+      "buildToken": "b97f4a92-b8c1-4e9f-9591-99b2882505d0"
+    }
+  }
+}
+
+DEBUG result image:registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55 error:<nil>
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation FinishBuild ($input: FinishBuildInput!) {\n\tfinishBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t\twallclockTimeMs\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "buildId": "6540464",
+      "builderMeta": {
+        "builderType": "depot.dev",
+        "buildkitEnabled": false,
+        "dockerVersion": "",
+        "platform": "",
+        "remoteAppName": "",
+        "remoteMachineId": ""
+      },
+      "clientMutationId": "",
+      "finalImage": {
+        "id": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+        "sizeBytes": 8087146,
+        "tag": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55"
+      },
+      "logs": "",
+      "machineId": "",
+      "status": "completed",
+      "strategiesAttempted": [
+        {
+          "error": "",
+          "note": "",
+          "result": "success",
+          "strategy": "depot.dev"
+        }
+      ],
+      "timings": {
+        "buildAndPushMs": 11824,
+        "buildMs": 14644,
+        "builderInitMs": 2131,
+        "contextBuildMs": -1,
+        "imageBuildMs": 14644,
+        "pushMs": -1
+      }
+    }
+  },
+  "operationName": "FinishBuild"
+}
+
+DEBUG {0x4000b6d0b0}
+DEBUG <-- 200 https://api.fly.io/graphql (565.28ms)
+
+DEBUG {
+  "data": {
+    "finishBuild": {
+      "id": "6540464",
+      "status": "completed",
+      "wallclockTimeMs": 15263
+    }
+  }
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines (834.23ms)
+
+DEBUG [
+  {
+    "id": "6e82955dc22198",
+    "name": "wild-river-4324",
+    "state": "stopped",
+    "region": "fra",
+    "instance_id": "01JZ0SDZPQD87JPNS55HTS17BV",
+    "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+    "config": {
+      "env": {
+        "FLY_PROCESS_GROUP": "app",
+        "NAIVE_CONFIG": "/app/config.json"
+      },
+      "init": {},
+      "guest": {
+        "cpu_kind": "shared",
+        "cpus": 1,
+        "memory_mb": 256
+      },
+      "metadata": {
+        "fly_flyctl_version": "2025.6.30-dev.1751299549",
+        "fly_platform_version": "v2",
+        "fly_process_group": "app",
+        "fly_release_id": "vOjyazkKK28j5u36qXMKY3OJe",
+        "fly_release_version": "2"
+      },
+      "services": [
+        {
+          "protocol": "tcp",
+          "internal_port": 443,
+          "ports": [
+            {
+              "port": 443
+            }
+          ],
+          "checks": [
+            {
+              "type": "tcp",
+              "interval": "10s",
+              "timeout": "2s"
+            }
+          ],
+          "force_instance_key": null
+        }
+      ],
+      "image": "registry.fly.io/vpn-elbana:deployment-01JZ0SCYB346PCSDXXT5RQ6ZEN",
+      "restart": {
+        "policy": "on-failure",
+        "max_retries": 10
+      }
+    },
+    "incomplete_config": null,
+    "image_ref": {
+      "registry": "registry.fly.io",
+      "repository": "vpn-elbana",
+      "tag": "deployment-01JZ0SCYB346PCSDXXT5RQ6ZEN",
+      "digest": "sha256:f97210300d93aa1524c917c8d2bdd6d67596786166607d40a8dc6771fafb1ca9",
+      "labels": null
+    },
+    "created_at": "2025-06-30T14:37:43Z",
+    "updated_at": "2025-06-30T16:07:23Z",
+    "events": [
+      {
+        "id": "01JZ0SFNNG3ZD788FQ9CNWCCG3",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": false,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T16:07:22.894Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751299643056
+      },
+      {
+        "id": "01JZ0SFMDMN4DPWSBV66ANQQSD",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751299641780
+      },
+      {
+        "id": "01JZ0SFKJ9S5S1VDNAPFQ55TZ3",
+        "type": "start",
+        "status": "starting",
+        "source": "flyd",
+        "timestamp": 1751299640905
+      },
+      {
+        "id": "01JZ0SF6Y8QTJ23YZ6FN8KCXFD",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": true,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T16:07:07.802Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751299627976
+      },
+      {
+        "id": "01JZ0SF5J9Q1T1MHF4SZEGH6BH",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751299626569
+      }
+    ],
+    "checks": [
+      {
+        "name": "servicecheck-00-tcp-443",
+        "status": "warning",
+        "output": "the machine hasn't started",
+        "updated_at": "2025-06-30T16:07:23.056Z"
+      }
+    ],
+    "host_status": "ok"
+  }
+]
+
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateRelease ($input: CreateReleaseInput!) {\n\tcreateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t\tversion\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appId": "vpn-elbana",
+      "buildId": "6540464",
+      "clientMutationId": "",
+      "definition": {
+        "app": "vpn-elbana",
+        "env": {
+          "NAIVE_CONFIG": "/app/config.json"
+        },
+        "services": [
+          {
+            "protocol": "tcp",
+            "internal_port": 443,
+            "ports": [
+              {
+                "port": 443
+              }
+            ],
+            "tcp_checks": [
+              {
+                "interval": "10s",
+                "timeout": "2s"
+              }
+            ]
+          }
+        ]
+      },
+      "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+      "platformVersion": "machines",
+      "strategy": "ROLLING"
+    }
+  },
+  "operationName": "CreateRelease"
+}
+
+DEBUG {0x4000b4fd10}
+DEBUG <-- 200 https://api.fly.io/graphql (2.24s)
+
+DEBUG {
+  "data": {
+    "createRelease": {
+      "release": {
+        "id": "p2xOXzMKKYnx1CzxQKORKonYq",
+        "version": 3
+      }
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation UpdateRelease ($input: UpdateReleaseInput!) {\n\tupdateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "clientMutationId": "",
+      "metadata": null,
+      "releaseId": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "status": "running"
+    }
+  },
+  "operationName": "UpdateRelease"
+}
+
+DEBUG {0x4000e43740}
+DEBUG <-- 200 https://api.fly.io/graphql (1.32s)
+
+DEBUG {
+  "data": {
+    "updateRelease": {
+      "release": {
+        "id": "p2xOXzMKKYnx1CzxQKORKonYq"
+      }
+    }
+  }
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines (2.26s)
+
+DEBUG [
+  {
+    "id": "6e82955dc22198",
+    "name": "wild-river-4324",
+    "state": "stopped",
+    "region": "fra",
+    "instance_id": "01JZ0SDZPQD87JPNS55HTS17BV",
+    "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+    "config": {
+      "env": {
+        "FLY_PROCESS_GROUP": "app",
+        "NAIVE_CONFIG": "/app/config.json"
+      },
+      "init": {},
+      "guest": {
+        "cpu_kind": "shared",
+        "cpus": 1,
+        "memory_mb": 256
+      },
+      "metadata": {
+        "fly_flyctl_version": "2025.6.30-dev.1751299549",
+        "fly_platform_version": "v2",
+        "fly_process_group": "app",
+        "fly_release_id": "vOjyazkKK28j5u36qXMKY3OJe",
+        "fly_release_version": "2"
+      },
+      "services": [
+        {
+          "protocol": "tcp",
+          "internal_port": 443,
+          "ports": [
+            {
+              "port": 443
+            }
+          ],
+          "checks": [
+            {
+              "type": "tcp",
+              "interval": "10s",
+              "timeout": "2s"
+            }
+          ],
+          "force_instance_key": null
+        }
+      ],
+      "image": "registry.fly.io/vpn-elbana:deployment-01JZ0SCYB346PCSDXXT5RQ6ZEN",
+      "restart": {
+        "policy": "on-failure",
+        "max_retries": 10
+      }
+    },
+    "incomplete_config": null,
+    "image_ref": {
+      "registry": "registry.fly.io",
+      "repository": "vpn-elbana",
+      "tag": "deployment-01JZ0SCYB346PCSDXXT5RQ6ZEN",
+      "digest": "sha256:f97210300d93aa1524c917c8d2bdd6d67596786166607d40a8dc6771fafb1ca9",
+      "labels": null
+    },
+    "created_at": "2025-06-30T14:37:43Z",
+    "updated_at": "2025-06-30T16:07:23Z",
+    "events": [
+      {
+        "id": "01JZ0SFNNG3ZD788FQ9CNWCCG3",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": false,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T16:07:22.894Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751299643056
+      },
+      {
+        "id": "01JZ0SFMDMN4DPWSBV66ANQQSD",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751299641780
+      },
+      {
+        "id": "01JZ0SFKJ9S5S1VDNAPFQ55TZ3",
+        "type": "start",
+        "status": "starting",
+        "source": "flyd",
+        "timestamp": 1751299640905
+      },
+      {
+        "id": "01JZ0SF6Y8QTJ23YZ6FN8KCXFD",
+        "type": "exit",
+        "status": "stopped",
+        "request": {
+          "exit_event": {
+            "requested_stop": false,
+            "restarting": true,
+            "guest_exit_code": 0,
+            "guest_signal": -1,
+            "guest_error": "",
+            "exit_code": 1,
+            "signal": -1,
+            "error": "",
+            "oom_killed": false,
+            "exited_at": "2025-06-30T16:07:07.802Z"
+          },
+          "restart_count": 10
+        },
+        "source": "flyd",
+        "timestamp": 1751299627976
+      },
+      {
+        "id": "01JZ0SF5J9Q1T1MHF4SZEGH6BH",
+        "type": "start",
+        "status": "started",
+        "request": {
+          "gpu_spot_price": 0
+        },
+        "source": "flyd",
+        "timestamp": 1751299626569
+      }
+    ],
+    "checks": [
+      {
+        "name": "servicecheck-00-tcp-443",
+        "status": "warning",
+        "output": "the machine hasn't started",
+        "updated_at": "2025-06-30T16:07:23.056Z"
+      }
+    ],
+    "host_status": "ok"
+  }
+]
+
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13000000000
+
+DEBUG <-- 201 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13000000000 (218.73ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "nonce": "768b990e7362",
+    "expires_at": -3695443814,
+    "owner": "6dddf20a-a0ab-5d3d-836b-47a3a8acd0e7@tokens.fly.io",
+    "description": "",
+    "version": "01JZ0SDZPQD87JPNS55HTS17BV"
+  }
+}
+
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198
+
+DEBUG {
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55"
+  },
+  "region": "fra"
+}
+
+DEBUG {0x4000dd2bd0}
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198 (3.51s)
+
+DEBUG {
+  "id": "6e82955dc22198",
+  "name": "wild-river-4324",
+  "state": "created",
+  "region": "fra",
+  "instance_id": "01JZ0T2JVKHQZHD4540BCSQD10",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "registry.fly.io",
+    "repository": "vpn-elbana",
+    "tag": "deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "digest": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+    "labels": null
+  },
+  "created_at": "2025-06-30T14:37:43Z",
+  "updated_at": "2025-06-30T16:17:42Z",
+  "events": [
+    {
+      "id": "01JZ0T2JVWVKQ0JY37B2M19RB7",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751300262780
+    }
+  ],
+  "checks": [
+    {
+      "name": "servicecheck-00-tcp-443",
+      "status": "warning",
+      "output": "the machine hasn't started",
+      "updated_at": "2025-06-30T16:17:42.78Z"
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/wait?instance_id=01JZ0T2JVKHQZHD4540BCSQD10&state=started&timeout=60
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/wait?instance_id=01JZ0T2JVKHQZHD4540BCSQD10&state=stopped&timeout=60
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/wait?instance_id=01JZ0T2JVKHQZHD4540BCSQD10&state=suspended&timeout=60
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13
+
+DEBUG <-- 201 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13 (473.88ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "nonce": "768b990e7362",
+    "expires_at": 1751300276,
+    "owner": "6dddf20a-a0ab-5d3d-836b-47a3a8acd0e7@tokens.fly.io",
+    "description": "",
+    "version": "01JZ0SDZPQD87JPNS55HTS17BV"
+  }
+}
+
+
+DEBUG got lease on machine 6e82955dc22198: &{success 0x4000aee8c0  }
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/wait?instance_id=01JZ0T2JVKHQZHD4540BCSQD10&state=started&timeout=60 (2.72s)
+
+DEBUG {
+  "ok": true
+}
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/ps
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/ps (324.67ms)
+
+DEBUG [
+  {
+    "pid": 1,
+    "stime": 0,
+    "rtime": 1,
+    "command": "/fly/init",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 6385664,
+    "listen_sockets": []
+  },
+  {
+    "pid": 2,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 3,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 4,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 5,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 6,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 7,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 8,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 9,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 10,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 11,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 12,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 13,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 14,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 15,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 16,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 17,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 18,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 19,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 20,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 21,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 22,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 24,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 25,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 26,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 27,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 28,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 29,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 30,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 31,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 32,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 33,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 34,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 35,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 36,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 37,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 38,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 39,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 45,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 67,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 71,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 103,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 144,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 145,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 146,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 149,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 152,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 155,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 158,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 161,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 166,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 169,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 172,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 175,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 176,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 179,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 182,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 187,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 188,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 196,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 201,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 225,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 238,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 240,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 251,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 252,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 259,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 260,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 424,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 620,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 621,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 622,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 623,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 624,
+    "stime": 0,
+    "rtime": 1,
+    "command": "",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 0,
+    "listen_sockets": []
+  },
+  {
+    "pid": 629,
+    "stime": 0,
+    "rtime": 1,
+    "command": "/.fly/hallpass",
+    "directory": "/",
+    "cpu": 0,
+    "rss": 19050496,
+    "listen_sockets": [
+      {
+        "proto": "tcp",
+        "address": "[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22"
+      }
+    ]
+  }
+]
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198 (206.7ms)
+
+DEBUG {
+  "id": "6e82955dc22198",
+  "name": "wild-river-4324",
+  "state": "started",
+  "region": "fra",
+  "instance_id": "01JZ0T2JVKHQZHD4540BCSQD10",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "registry.fly.io",
+    "repository": "vpn-elbana",
+    "tag": "deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "digest": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+    "labels": null
+  },
+  "created_at": "2025-06-30T14:37:43Z",
+  "updated_at": "2025-06-30T16:17:45Z",
+  "events": [
+    {
+      "id": "01JZ0T2N5S9FH4CKNKFZVGWB76",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751300265145
+    },
+    {
+      "id": "01JZ0T2JVWVKQ0JY37B2M19RB7",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751300262780
+    }
+  ],
+  "checks": [
+    {
+      "name": "servicecheck-00-tcp-443",
+      "status": "warning",
+      "output": "waiting for status update",
+      "updated_at": "2025-06-30T16:17:45.145Z"
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198 (199.42ms)
+
+DEBUG {
+  "id": "6e82955dc22198",
+  "name": "wild-river-4324",
+  "state": "starting",
+  "region": "fra",
+  "instance_id": "01JZ0T2JVKHQZHD4540BCSQD10",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "registry.fly.io",
+    "repository": "vpn-elbana",
+    "tag": "deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "digest": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+    "labels": null
+  },
+  "created_at": "2025-06-30T14:37:43Z",
+  "updated_at": "2025-06-30T16:17:46Z",
+  "events": [
+    {
+      "id": "01JZ0T2PHRPXCJ3K76AVNGJY9B",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751300266552
+    },
+    {
+      "id": "01JZ0T2PEMX1CB96206NDA6SFM",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T16:17:46.287Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751300266452
+    },
+    {
+      "id": "01JZ0T2N5S9FH4CKNKFZVGWB76",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751300265145
+    },
+    {
+      "id": "01JZ0T2JVWVKQ0JY37B2M19RB7",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751300262780
+    }
+  ],
+  "checks": [
+    {
+      "name": "servicecheck-00-tcp-443",
+      "status": "warning",
+      "output": "the machine hasn't started",
+      "updated_at": "2025-06-30T16:17:46.552Z"
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198
+
+DEBUG <-- 201 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13 (150.6ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "nonce": "768b990e7362",
+    "expires_at": 1751300280,
+    "owner": "6dddf20a-a0ab-5d3d-836b-47a3a8acd0e7@tokens.fly.io",
+    "description": "",
+    "version": "01JZ0T2JVKHQZHD4540BCSQD10"
+  }
+}
+
+
+DEBUG got lease on machine 6e82955dc22198: &{success 0x4000aee680  }
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198 (116.48ms)
+
+DEBUG {
+  "id": "6e82955dc22198",
+  "name": "wild-river-4324",
+  "state": "started",
+  "region": "fra",
+  "instance_id": "01JZ0T2JVKHQZHD4540BCSQD10",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "registry.fly.io",
+    "repository": "vpn-elbana",
+    "tag": "deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "digest": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+    "labels": null
+  },
+  "created_at": "2025-06-30T14:37:43Z",
+  "updated_at": "2025-06-30T16:17:47Z",
+  "events": [
+    {
+      "id": "01JZ0T2QDC2ZQ2R4J9XNBW4YAS",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751300267436
+    },
+    {
+      "id": "01JZ0T2PHRPXCJ3K76AVNGJY9B",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751300266552
+    },
+    {
+      "id": "01JZ0T2PEMX1CB96206NDA6SFM",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T16:17:46.287Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751300266452
+    },
+    {
+      "id": "01JZ0T2N5S9FH4CKNKFZVGWB76",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751300265145
+    },
+    {
+      "id": "01JZ0T2JVWVKQ0JY37B2M19RB7",
+      "type": "launch",
+      "status": "created",
+      "source": "user",
+      "timestamp": 1751300262780
+    }
+  ],
+  "checks": [
+    {
+      "name": "servicecheck-00-tcp-443",
+      "status": "warning",
+      "output": "waiting for status update",
+      "updated_at": "2025-06-30T16:17:47.436Z"
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> GET https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198 (237.35ms)
+
+DEBUG {
+  "id": "6e82955dc22198",
+  "name": "wild-river-4324",
+  "state": "starting",
+  "region": "fra",
+  "instance_id": "01JZ0T2JVKHQZHD4540BCSQD10",
+  "private_ip": "fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2",
+  "config": {
+    "env": {
+      "FLY_PROCESS_GROUP": "app",
+      "NAIVE_CONFIG": "/app/config.json"
+    },
+    "init": {},
+    "guest": {
+      "cpu_kind": "shared",
+      "cpus": 1,
+      "memory_mb": 256
+    },
+    "metadata": {
+      "fly_flyctl_version": "2025.6.30-dev.1751300235",
+      "fly_platform_version": "v2",
+      "fly_process_group": "app",
+      "fly_release_id": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "fly_release_version": "3"
+    },
+    "services": [
+      {
+        "protocol": "tcp",
+        "internal_port": 443,
+        "ports": [
+          {
+            "port": 443
+          }
+        ],
+        "checks": [
+          {
+            "type": "tcp",
+            "interval": "10s",
+            "timeout": "2s"
+          }
+        ],
+        "force_instance_key": null
+      }
+    ],
+    "image": "registry.fly.io/vpn-elbana:deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "restart": {
+      "policy": "on-failure",
+      "max_retries": 10
+    }
+  },
+  "incomplete_config": null,
+  "image_ref": {
+    "registry": "registry.fly.io",
+    "repository": "vpn-elbana",
+    "tag": "deployment-01JZ0T1T7MCA4CNW1ZXH7A7A55",
+    "digest": "sha256:1892814db90890a8edfe5e5727abcd9936226f4c0946bcce5c1436a6eaaf7449",
+    "labels": null
+  },
+  "created_at": "2025-06-30T14:37:43Z",
+  "updated_at": "2025-06-30T16:17:48Z",
+  "events": [
+    {
+      "id": "01JZ0T2RTH3GBHZCQ5XG77WBKA",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751300268881
+    },
+    {
+      "id": "01JZ0T2RPG14PG9FVART8H5C4D",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T16:17:48.579Z"
+        },
+        "restart_count": 2
+      },
+      "source": "flyd",
+      "timestamp": 1751300268752
+    },
+    {
+      "id": "01JZ0T2QDC2ZQ2R4J9XNBW4YAS",
+      "type": "start",
+      "status": "started",
+      "request": {
+        "gpu_spot_price": 0
+      },
+      "source": "flyd",
+      "timestamp": 1751300267436
+    },
+    {
+      "id": "01JZ0T2PHRPXCJ3K76AVNGJY9B",
+      "type": "start",
+      "status": "starting",
+      "source": "flyd",
+      "timestamp": 1751300266552
+    },
+    {
+      "id": "01JZ0T2PEMX1CB96206NDA6SFM",
+      "type": "exit",
+      "status": "stopped",
+      "request": {
+        "exit_event": {
+          "requested_stop": false,
+          "restarting": true,
+          "guest_exit_code": 0,
+          "guest_signal": -1,
+          "guest_error": "",
+          "exit_code": 1,
+          "signal": -1,
+          "error": "",
+          "oom_killed": false,
+          "exited_at": "2025-06-30T16:17:46.287Z"
+        },
+        "restart_count": 1
+      },
+      "source": "flyd",
+      "timestamp": 1751300266452
+    }
+  ],
+  "checks": [
+    {
+      "name": "servicecheck-00-tcp-443",
+      "status": "warning",
+      "output": "the machine hasn't started",
+      "updated_at": "2025-06-30T16:17:48.881Z"
+    }
+  ],
+  "host_status": "ok"
+}
+
+
+DEBUG --> DELETE https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease
+
+DEBUG <-- 200 https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease (205.88ms)
+
+DEBUG {
+  "status": "success",
+  "data": {
+    "ok": true
+  }
+}
+
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation UpdateRelease ($input: UpdateReleaseInput!) {\n\tupdateRelease(input: $input) {\n\t\trelease {\n\t\t\tid\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "clientMutationId": "",
+      "metadata": {
+        "post_deployment_info": {
+          "flyctl_version": "2025.6.30-dev.1751300235",
+          "error": "failed to update machine 6e82955dc22198: Unrecoverable error: smoke checks for 6e82955dc22198 failed: the app appears to be crashing"
+        }
+      },
+      "releaseId": "p2xOXzMKKYnx1CzxQKORKonYq",
+      "status": "failed"
+    }
+  },
+  "operationName": "UpdateRelease"
+}
+
+DEBUG {0x4000e32360}
+DEBUG <-- 200 https://api.fly.io/graphql (809.68ms)
+
+DEBUG {
+  "data": {
+    "updateRelease": {
+      "release": {
+        "id": "p2xOXzMKKYnx1CzxQKORKonYq"
+      }
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG --> POST https://api.machines.dev/v1/apps/vpn-elbana/machines/6e82955dc22198/lease?ttl=13
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (599.67ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": read tcp 10.54.238.242:49878->37.16.19.234:4318: read: connection reset by peer
+DEBUG Task manager done
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []
+DEBUG querying for statuspage incidents resulted to &{[]}

@@ -1,0 +1,14 @@
+access_token: fm2_lJPECAAAAAAACT6gxBCgmAL6lZBTDcf5O5kRm8MswrVodHRwczovL2FwaS5mbHkuaW8vdjGUAJLOABGh1h8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDxdlTeSVkEk9CrTejX0bxi5EwqqK6Faa/8nWzweq3OaQ1XScuG8MjVwU71EGBsb0AWOWoLd684DPJnDLo3ETs2xiyTlzVHqhMnMFgV6UrDGUDgh1Y0rmUV0ljJaG7OM9x4WbBlhcAJMglKIHbUT1MRmsMQUJKMHDSwKYLLSaeyyrILY+nzXZwE/1f0dXMQgtKiEQA65/TUKSlQReXyITLE6WAYRKHTRDb/kNZxZPcE=,fm2_lJPETs2xiyTlzVHqhMnMFgV6UrDGUDgh1Y0rmUV0ljJaG7OM9x4WbBlhcAJMglKIHbUT1MRmsMQUJKMHDSwKYLLSaeyyrILY+nzXZwE/1f0dXMQQOZJ2l3copKeTWiBnzL6gmcO5aHR0cHM6Ly9hcGkuZmx5LmlvL2FhYS92MZYEks5oYrwCzmhivngXzgAQ8jQKkc4AEPI0xCBOeGD0zcHeUwcbKav2Lf6nEUoJDA0Rz7XIty85R97Z2g==,fo1_HHv6ndqFhPKKuZ8UlZ1lrHmqqYQ2CY63P5SoROkXjLg
+metrics_token: ""
+wire_guard_state:
+    personal:
+        dns: ""
+        localprivate: lb77nvvgdPC2sLhehn3J437j1bVufY0NjCfEr+8Q5Gc=
+        localpublic: fK84Yu11uZCSRv4pSZ9LsiWABwBkYaCyfXkpbSCaNF4=
+        name: interactive-localhost-mohamedalbana35-gmail-com-01JYZV9FJ3KFDQS3KXVYFZGJXD
+        org: personal
+        peer:
+            endpointip: fra2.gateway.6pn.dev
+            peerip: fdaa:1f:999d:a7b:8dd7:0:a:102
+            pubkey: KC8fjwgUb9FD3xyuhqCcl/igTVRapt9zC1goAPGtIDs=
+        region: fra

@@ -1,0 +1,17 @@
+app = "vpn-elbana"
+
+[build]
+
+[env]
+NAIVE_CONFIG = "/app/config.json"
+
+[[services]]
+  internal_port = 443
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 443
+
+  [[services.tcp_checks]]
+    interval = "10s"
+    timeout = "2s"
