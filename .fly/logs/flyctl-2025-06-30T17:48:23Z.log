@@ -1,0 +1,141 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (760.48ms)
+
+DEBUG {
+  "data": {
+    "apphostissues": {
+      "hostIssues": {
+        "nodes": []
+      }
+    }
+  }
+}
+
+DEBUG <-- 200 https://api.fly.io/graphql (812.19ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG Starting task manager
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query ($appName: String!) { appcompact:app(name: $appName) { id name hostname deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG failed querying for Statuspage incidents: Get "https://incidents.flyio.net/v1/incidents": context deadline exceeded
+DEBUG <-- 200 https://api.fly.io/graphql (677.57ms)
+
+DEBUG {
+  "data": {
+    "appcompact": {
+      "id": "vpn-elbana",
+      "name": "vpn-elbana",
+      "hostname": "vpn-elbana.fly.dev",
+      "deployed": true,
+      "network": "",
+      "status": "suspended",
+      "appUrl": null,
+      "platformVersion": "machines",
+      "postgresAppRole": null,
+      "organization": {
+        "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+        "internalNumericId": "1155542",
+        "slug": "personal",
+        "paidPlan": true
+      }
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateLimitedAccessToken ($name: String!, $organizationId: ID!, $profile: String!, $profileParams: JSON, $expiry: String!) {\n\tcreateLimitedAccessToken(input: {name:$name,organizationId:$organizationId,profile:$profile,profileParams:$profileParams,expiry:$expiry}) {\n\t\tlimitedAccessToken {\n\t\t\ttokenHeader\n\t\t}\n\t}\n}\n",
+  "variables": {
+    "name": "flyctl deploy token",
+    "organizationId": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+    "profile": "deploy",
+    "profileParams": {
+      "app_id": "vpn-elbana"
+    },
+    "expiry": "175200h0m0s"
+  },
+  "operationName": "CreateLimitedAccessToken"
+}
+
+DEBUG {0x400099f6b0}
+DEBUG <-- 200 https://api.fly.io/graphql (996.41ms)
+
+DEBUG {
+  "data": {
+    "createLimitedAccessToken": {
+      "limitedAccessToken": {
+        "tokenHeader": "FlyV1 fm2_lJPECAAAAAAACT6gxBBuzMAC6KIoh66/H1qB9AEEwrVodHRwczovL2FwaS5mbHkuaW8vdjGWAJLOABGh1h8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDxGBOASGZmsEBSId5vl5c4U38afOLQkcA5RnRfWfR5TxXBiE/gJM4FgBp2V9lng4wjAqlhWBKiq8FfuV3TETnRdWLbVlaUvhKwX/aPVECUuAxLOCBCPwMR9SW99QwGk97Iy1vbppdhGgzP+78fDrslWdH/WtsPm0BxrYKQoz8VNG38jJVXuOA/OcTh9KA2SlAORgc4AggbyHwWRgqdidWlsZGVyH6J3Zx8BxCBhcQRpgkio9/zolw5XJ/+++ZPu5wFmwrQ+ZqsNPRc5hQ==,fm2_lJPETnRdWLbVlaUvhKwX/aPVECUuAxLOCBCPwMR9SW99QwGk97Iy1vbppdhGgzP+78fDrslWdH/WtsPm0BxrYKQoz8VNG38jJVXuOA/OcTh9KMQQDYPXPjidnhWs6UUxTdWdKsO5aHR0cHM6Ly9hcGkuZmx5LmlvL2FhYS92MZgEks5oYs3Lzo360+kXzgAQ8jQKkc4AEPI0DMQQdi68PvRtSk9/9KheNRdOwMQgJYl65tSpF6MuudJpgvim6RPtZDcNrtmlI1wkMxBAt6M="
+      }
+    }
+  }
+}
+
+DEBUG Task manager done
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []

@@ -1086,3 +1086,115 @@
 2025/06/30 16:29:34.789063 srv validated wireguard peers
 2025/06/30 16:31:35.030181 srv personal, map[personal:0x400231e480]
 2025/06/30 16:31:35.030351 srv validated wireguard peers
+2025/06/30 16:33:35.467429 srv personal, map[personal:0x40006cd050]
+2025/06/30 16:33:35.467554 srv validated wireguard peers
+2025/06/30 16:35:38.127630 srv personal, map[personal:0x40006cd050]
+2025/06/30 16:35:38.131391 srv validated wireguard peers
+2025/06/30 16:37:38.542443 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": EOF
+2025/06/30 16:37:38.542572 srv personal, map[personal:0x400231e750]
+2025/06/30 16:37:38.542589 srv validated wireguard peers
+2025/06/30 16:39:56.229506 srv personal, map[personal:0x40006cdc20]
+2025/06/30 16:39:56.229550 srv validated wireguard peers
+2025/06/30 16:41:40.131545 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:38646->185.40.234.73:443: read: connection timed out
+2025/06/30 16:41:40.135970 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 16:41:45.132112 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 16:41:46.582607 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 16:41:50.132993 srv resetting connection due to error: failed to write msg: failed to write frame: failed to flush: write tcp 10.54.238.242:38646->185.40.234.73:443: write: broken pipe
+2025/06/30 16:41:55.132709 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 16:41:56.581246 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 16:43:15.105630 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+2025/06/30 16:43:15.108597 srv personal, map[personal:0x40006cd320]
+2025/06/30 16:43:15.108686 srv validated wireguard peers
+2025/06/30 16:45:18.944504 srv personal, map[personal:0x40007bbcb0]
+2025/06/30 16:45:18.945144 srv validated wireguard peers
+2025/06/30 16:47:19.816631 srv personal, map[personal:0x40007bb9e0]
+2025/06/30 16:47:19.816737 srv validated wireguard peers
+2025/06/30 16:49:33.860774 srv personal, map[personal:0x40006cd710]
+2025/06/30 16:49:33.860817 srv validated wireguard peers
+2025/06/30 16:51:39.022612 srv personal, map[personal:0x400060cf30]
+2025/06/30 16:51:39.025200 srv validated wireguard peers
+2025/06/30 16:53:49.050178 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+2025/06/30 16:53:49.050534 srv personal, map[personal:0x40006cc480]
+2025/06/30 16:53:49.055527 srv validated wireguard peers
+2025/06/30 16:55:50.017014 srv personal, map[personal:0x400060cd80]
+2025/06/30 16:55:50.017559 srv validated wireguard peers
+2025/06/30 16:57:50.858760 srv personal, map[personal:0x40006cd0e0]
+2025/06/30 16:57:50.858904 srv validated wireguard peers
+2025/06/30 16:59:53.696913 srv personal, map[personal:0x40006cd440]
+2025/06/30 16:59:53.697094 srv validated wireguard peers
+2025/06/30 17:02:05.264830 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": EOF
+2025/06/30 17:02:05.269599 srv personal, map[personal:0x400231e240]
+2025/06/30 17:02:05.269707 srv validated wireguard peers
+2025/06/30 17:04:06.664429 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": EOF
+2025/06/30 17:04:06.666106 srv personal, map[personal:0x400060cea0]
+2025/06/30 17:04:06.666182 srv validated wireguard peers
+2025/06/30 17:06:09.314746 srv personal, map[personal:0x400060cfc0]
+2025/06/30 17:06:09.314930 srv validated wireguard peers
+2025/06/30 17:08:12.035555 srv personal, map[personal:0x40006ccea0]
+2025/06/30 17:08:12.037620 srv validated wireguard peers
+2025/06/30 17:10:22.065921 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+2025/06/30 17:10:22.068280 srv personal, map[personal:0x400231e360]
+2025/06/30 17:10:22.068356 srv validated wireguard peers
+2025/06/30 17:12:32.088480 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+2025/06/30 17:12:32.088809 srv personal, map[personal:0x400060ccf0]
+2025/06/30 17:12:32.088862 srv validated wireguard peers
+2025/06/30 17:14:34.137359 srv personal, map[personal:0x40007bbe60]
+2025/06/30 17:14:34.139666 srv validated wireguard peers
+2025/06/30 17:16:34.767891 srv personal, map[personal:0x400060ce10]
+2025/06/30 17:16:34.768137 srv validated wireguard peers
+2025/06/30 17:18:38.271525 srv personal, map[personal:0x40006cd5f0]
+2025/06/30 17:18:38.273669 srv validated wireguard peers
+2025/06/30 17:20:48.297782 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+2025/06/30 17:20:48.297947 srv personal, map[personal:0x40006cc510]
+2025/06/30 17:20:48.297973 srv validated wireguard peers
+2025/06/30 17:22:27.540881 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:49928->185.40.234.73:443: read: connection timed out
+2025/06/30 17:22:27.541946 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 17:22:32.541575 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 17:22:36.624796 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 17:22:37.541300 srv resetting connection due to error: failed to write msg: failed to write frame: failed to flush: write tcp 10.54.238.242:49928->185.40.234.73:443: write: broken pipe
+2025/06/30 17:22:42.542075 srv resetting connection due to error: failed to get reader: failed to read frame header: EOF
+2025/06/30 17:22:51.622875 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 17:22:53.207492 srv failed pruning invalid peers: Not authorized to show this organization::feature.
+2025/06/30 17:22:53.207669 srv personal, map[personal:0x400056fb90]
+2025/06/30 17:22:53.207707 srv validated wireguard peers
+2025/06/30 17:25:15.293373 srv personal, map[personal:0x400056f4d0]
+2025/06/30 17:25:15.293480 srv validated wireguard peers
+2025/06/30 17:27:15.892710 srv personal, map[personal:0x40007bb7a0]
+2025/06/30 17:27:15.893551 srv validated wireguard peers
+2025/06/30 17:29:18.146224 srv personal, map[personal:0x400056f320]
+2025/06/30 17:29:18.146613 srv validated wireguard peers
+2025/06/30 17:31:22.843676 srv personal, map[personal:0x40006cdd40]
+2025/06/30 17:31:22.843791 srv validated wireguard peers
+2025/06/30 17:33:24.241805 srv personal, map[personal:0x400060cfc0]
+2025/06/30 17:33:24.241917 srv validated wireguard peers
+2025/06/30 17:35:25.554202 srv personal, map[personal:0x400056f8c0]
+2025/06/30 17:35:25.558124 srv validated wireguard peers
+2025/06/30 17:37:28.502896 srv personal, map[personal:0x40006cdc20]
+2025/06/30 17:37:28.503026 srv validated wireguard peers
+2025/06/30 17:39:35.205795 srv personal, map[personal:0x4000a802d0]
+2025/06/30 17:39:35.219605 srv validated wireguard peers
+2025/06/30 17:42:22.823630 srv failed pruning invalid peers: Post "https://api.fly.io/graphql": read tcp 10.54.238.242:45172->77.83.143.220:443: read: connection reset by peer
+2025/06/30 17:42:22.826351 srv personal, map[personal:0x40006ccea0]
+2025/06/30 17:42:22.826420 srv validated wireguard peers
+2025/06/30 17:44:33.438489 srv failed pruning invalid peers: Not authorized to show this organization::feature.
+2025/06/30 17:44:33.438685 srv personal, map[personal:0x40003d58c0]
+2025/06/30 17:44:33.438719 srv validated wireguard peers
+2025/06/30 17:45:20.726933 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:38820->185.40.234.73:443: read: software caused connection abort
+2025/06/30 17:45:20.727775 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:38820->185.40.234.73:443: read: software caused connection abort
+2025/06/30 17:45:25.727366 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:38820->185.40.234.73:443: read: software caused connection abort
+2025/06/30 17:45:26.622509 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 17:45:30.728204 srv resetting connection due to error: failed to write msg: failed to write frame: failed to flush: write tcp 10.54.238.242:38820->185.40.234.73:443: write: broken pipe
+2025/06/30 17:45:35.727768 srv resetting connection due to error: failed to get reader: failed to read frame header: read tcp 10.54.238.242:38820->185.40.234.73:443: read: software caused connection abort
+2025/06/30 17:45:36.622181 srv (re-)connecting to wss://fra2.gateway.6pn.dev:443/
+2025/06/30 17:46:34.768688 srv personal, map[personal:0x400060cd80]
+2025/06/30 17:46:34.769154 srv validated wireguard peers
+2025/06/30 17:48:35.783799 srv personal, map[personal:0x40007bba70]
+2025/06/30 17:48:35.793442 srv validated wireguard peers
+2025/06/30 17:50:36.638106 srv personal, map[personal:0x400060cf30]
+2025/06/30 17:50:36.638167 srv validated wireguard peers
+2025/06/30 17:52:38.711716 srv personal, map[personal:0x40007bb950]
+2025/06/30 17:52:38.712285 srv validated wireguard peers
+2025/06/30 17:54:45.833400 srv personal, map[personal:0x40022b2b40]
+2025/06/30 17:54:45.833528 srv validated wireguard peers
+2025/06/30 17:56:46.610840 srv personal, map[personal:0x40022b2990]
+2025/06/30 17:56:46.610959 srv validated wireguard peers
