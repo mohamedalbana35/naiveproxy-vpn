@@ -1,12 +1,5 @@
 {
-  "listen": ":443",
-  "proxy": "direct",
-  "tls": {
-    "enabled": true,
-    "cert": "/app/cert.pem",
-    "key": "/app/key.pem"
-  },
-  "users": {
-    "mohamedalbana": "Medo@1298"
-  }
+  "listen": "0.0.0.0:443",
+  "proxy": "https://mohamedalbana:Medo@1298@fake.com",
+  "log": ""
 }

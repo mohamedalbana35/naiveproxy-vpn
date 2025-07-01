@@ -1,0 +1,110 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (424.04ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG Starting task manager
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG <-- 200 https://api.fly.io/graphql (488.83ms)
+
+DEBUG {
+  "data": {
+    "apphostissues": {
+      "hostIssues": {
+        "nodes": []
+      }
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (464.66ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG Task manager done
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []
+DEBUG querying for statuspage incidents resulted to &{[]}
