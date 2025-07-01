@@ -1,0 +1,2434 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (659.87ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG Starting task manager
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG {
+  "query": "query ($appName: String!) { appbasic:app(name: $appName) { id name platformVersion organization { id internalNumericId slug rawSlug paidPlan } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG failed querying for Statuspage incidents: Get "https://incidents.flyio.net/v1/incidents": context deadline exceeded
+DEBUG failed querying for host issues: Post "https://api.fly.io/graphql": net/http: request canceled
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token= (2.4s)
+
+DEBUG {
+  "data": [
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:01.471715947Z",
+        "message": "2025-06-30T18:15:01.471657757 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.126675124Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.201516121Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.20345677Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.218564744Z",
+        "message": "Machine started in 864ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.231233746Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:02.366248037Z",
+        "message": "2025/06/30 18:15:02 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:03.208350291Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:03.223693526Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:03.234038437Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:03.234510379Z",
+        "message": "[    1.700763] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:03.834658948Z",
+        "message": "2025-06-30T18:15:03.834613167 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.495555244Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.57439734Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.576042298Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.584640881Z",
+        "message": "Machine started in 817ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.605761204Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:04.742288272Z",
+        "message": "2025/06/30 18:15:04 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:05.581725633Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:05.596819627Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:05.606389073Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:05.606853936Z",
+        "message": "[    1.711674] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:06.253693943Z",
+        "message": "2025-06-30T18:15:06.253660963 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:06.909387004Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:06.989844328Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:06.991401255Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:07.003199693Z",
+        "message": "Machine started in 815ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:07.023288372Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:07.158848186Z",
+        "message": "2025/06/30 18:15:07 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:07.99914371Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:08.014471215Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:08.530340871Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:08.530816154Z",
+        "message": "[    2.216537] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.172697874Z",
+        "message": "2025-06-30T18:15:10.172662464 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.830911217Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.910774288Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.912652227Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.939534519Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:10.963732598Z",
+        "message": "Machine started in 857ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:11.080469759Z",
+        "message": "2025/06/30 18:15:11 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:11.918599143Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:11.935673157Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:12.247771205Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:12.248276307Z",
+        "message": "[    2.012777] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:13.901520823Z",
+        "message": "2025-06-30T18:15:13.901483123 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.557029473Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.635924929Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.637766058Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.659635755Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.69524698Z",
+        "message": "Machine started in 855ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:14.800532085Z",
+        "message": "2025/06/30 18:15:14 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:15.641780075Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:15.6570444Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:15.665961483Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:15.666445815Z",
+        "message": "[    1.702213] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:18.982698885Z",
+        "message": "2025-06-30T18:15:18.982665615 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.638413756Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.717788574Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.719623073Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.742504325Z",
+        "message": "Machine started in 825ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.744906517Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:19.883948598Z",
+        "message": "2025/06/30 18:15:19 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:20.724234993Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:20.739209516Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:20.748372561Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:20.748883023Z",
+        "message": "[    1.706368] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.00096022Z",
+        "message": "2025-06-30T18:15:33.000921290 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.658234019Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.73404382Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.735574528Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.743704228Z",
+        "message": "Machine started in 811ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.762278938Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:33.8954175Z",
+        "message": "2025/06/30 18:15:33 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:34.744178766Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:34.756501707Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:34.765737962Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:34.766213625Z",
+        "message": "[    1.703466] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:47.292184693Z",
+        "message": "2025-06-30T18:15:47.292093303 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:47.940710869Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:48.016132718Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:48.017678666Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:48.039261141Z",
+        "message": "Machine started in 811ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:48.040719499Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:48.179576009Z",
+        "message": "2025/06/30 18:15:48 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:49.022921008Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:49.038013392Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:49.047122417Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:15:49.047582579Z",
+        "message": "[    1.698401] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:02.636495754Z",
+        "message": "2025-06-30T18:16:02.636467274 [01JZ10S7GNHXNMPVCP38ZGSGMV:main] Running Firecracker v1.7.0",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.289058319Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting init (commit: d0572327e)...",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.367942506Z",
+        "message": "\u001b[32m INFO\u001b[0m Preparing to run: `/usr/bin/naive` as root",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.372306877Z",
+        "message": "\u001b[32m INFO\u001b[0m [fly api proxy] listening at /.fly/api",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.380872919Z",
+        "message": "Machine started in 811ms",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.392677107Z",
+        "message": "Error reading config.json: (1003) File doesn't exist.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:03.531923139Z",
+        "message": "2025/06/30 18:16:03 INFO SSH listening listen_address=[fdaa:1f:999d:a7b:4c6:2cf4:fa3a:2]:22",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:04.37352668Z",
+        "message": "\u001b[32m INFO\u001b[0m Main child exited normally with code: 1",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:04.388285683Z",
+        "message": "\u001b[32m INFO\u001b[0m Starting clean up.",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:04.397366437Z",
+        "message": "\u001b[33m WARN\u001b[0m could not unmount /rootfs: EINVAL: Invalid argument",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:04.397828559Z",
+        "message": "[    1.701318] reboot: Restarting system",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "app"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "logs",
+      "attributes": {
+        "timestamp": "2025-06-30T18:16:04.569192688Z",
+        "message": "machine has reached its max restart count of 10",
+        "level": "info",
+        "instance": "6e82955dc22198",
+        "region": "fra",
+        "meta": {
+          "region": "fra",
+          "instance": "6e82955dc22198",
+          "event": {
+            "provider": "runner"
+          },
+          "http": null,
+          "error": null,
+          "url": null
+        }
+      }
+    }
+  ],
+  "meta": {
+    "next_token": "1751307364569192688"
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/graphql (2.69s)
+
+DEBUG {
+  "data": {
+    "appbasic": {
+      "id": "vpn-elbana",
+      "name": "vpn-elbana",
+      "platformVersion": "machines",
+      "organization": {
+        "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+        "internalNumericId": "1155542",
+        "slug": "personal",
+        "rawSlug": "mohamed-elbana",
+        "paidPlan": true
+      }
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "mutation($input: ValidateWireGuardPeersInput!) { validateWireGuardPeers(input: $input) { invalidPeerIps } }",
+  "variables": {
+    "input": {
+      "peerIps": [
+        "fdaa:1f:999d:a7b:8dd7:0:a:102"
+      ]
+    }
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (304.46ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/graphql (428.72ms)
+
+DEBUG {
+  "data": {
+    "validateWireGuardPeers": {
+      "invalidPeerIps": []
+    }
+  }
+}
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (342.56ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (511.77ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (410.5ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (451.4ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (404.83ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (346.15ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (289.6ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (341.84ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (421.25ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG <-- 200 https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688 (424.02ms)
+
+DEBUG {
+  "data": [],
+  "meta": {
+    "next_token": ""
+  }
+}
+
+
+DEBUG --> GET https://api.fly.io/api/v1/apps/vpn-elbana/logs?next_token=1751307364569192688
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (6.01s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (987.17ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []
+DEBUG Task manager done

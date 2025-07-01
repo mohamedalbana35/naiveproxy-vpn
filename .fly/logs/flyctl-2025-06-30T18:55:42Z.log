@@ -1,0 +1,1148 @@
+DEBUG Loaded flyctl config from/data/data/com.termux/files/home/.fly/config.yml
+DEBUG determined hostname: "localhost"
+DEBUG determined working directory: "/data/data/com.termux/files/home"
+DEBUG determined config directory: "/data/data/com.termux/files/home/.fly"
+DEBUG ensured config directory exists.
+DEBUG ensured config directory perms.
+DEBUG cache loaded.
+DEBUG config initialized.
+DEBUG skipped querying for new release
+DEBUG checking for updates...
+DEBUG started querying for statuspage incidents
+DEBUG client initialized.
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG started querying for host issues
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($appName: String!) { apphostissues:app(name: $appName) { hostIssues { nodes { internalId message createdAt updatedAt } } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG failed querying for Statuspage incidents: Get "https://incidents.flyio.net/v1/incidents": context deadline exceeded
+DEBUG failed querying for host issues: Post "https://api.fly.io/graphql": net/http: request canceled
+DEBUG <-- 200 https://api.fly.io/graphql (3.15s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG app config loaded from /data/data/com.termux/files/home/fly.toml
+DEBUG Starting task manager
+DEBUG monitoring tokens at /data/data/com.termux/files/home/.fly/config.yml
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query { viewer { ... on User { id email enablePaidHobby } ... on Macaroon { email } } }",
+  "variables": null
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (472.27ms)
+
+DEBUG {
+  "data": {
+    "viewer": {
+      "id": "6xy84ZMn8AxvgTLj9xOa",
+      "email": "mohamedalbana35@gmail.com",
+      "enablePaidHobby": true
+    }
+  }
+}
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query ($appName: String!) { appcompact:app(name: $appName) { id name hostname deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }",
+  "variables": {
+    "appName": "vpn-elbana"
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (384.93ms)
+
+DEBUG {
+  "data": {
+    "appcompact": {
+      "id": "vpn-elbana",
+      "name": "vpn-elbana",
+      "hostname": "vpn-elbana.fly.dev",
+      "deployed": false,
+      "network": "",
+      "status": "suspended",
+      "appUrl": null,
+      "platformVersion": "machines",
+      "postgresAppRole": null,
+      "organization": {
+        "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+        "internalNumericId": "1155542",
+        "slug": "personal",
+        "paidPlan": true
+      }
+    }
+  }
+}
+
+DEBUG trying remote docker daemon
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateBuild ($input: CreateBuildInput!) {\n\tcreateBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderType": "depot.dev",
+      "clientMutationId": "",
+      "imageOpts": {
+        "buildArgs": {},
+        "buildPacks": null,
+        "builder": "",
+        "builtIn": "",
+        "builtInSettings": null,
+        "dockerfilePath": "",
+        "extraBuildArgs": null,
+        "imageLabel": "",
+        "imageRef": "",
+        "noCache": false,
+        "publish": true,
+        "tag": "registry.fly.io/vpn-elbana:deployment-01JZ134BQQWCG8M33M59VSTF10",
+        "target": ""
+      },
+      "machineId": "",
+      "strategiesAvailable": [
+        "depot.dev"
+      ]
+    }
+  },
+  "operationName": "CreateBuild"
+}
+
+DEBUG {0x40006ac330}
+DEBUG <-- 200 https://api.fly.io/graphql (343.84ms)
+
+DEBUG {
+  "data": {
+    "createBuild": {
+      "id": "6545233",
+      "status": "started"
+    }
+  }
+}
+
+DEBUG Trying 'depot.dev' strategy
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation EnsureDepotRemoteBuilder ($input: EnsureDepotRemoteBuilderInput!) {\n\tensureDepotRemoteBuilder(input: $input) {\n\t\tbuildId\n\t\tbuildToken\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderScope": "organization",
+      "clientMutationId": null,
+      "organizationId": null,
+      "region": ""
+    }
+  },
+  "operationName": "EnsureDepotRemoteBuilder"
+}
+
+DEBUG {0x4000450e10}
+DEBUG <-- 200 https://api.fly.io/graphql (716.01ms)
+
+DEBUG {
+  "data": {
+    "ensureDepotRemoteBuilder": {
+      "buildId": "h7gckzl2jp",
+      "buildToken": "2372380b-1033-40ef-9b31-899e0e7d252e"
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (487.61ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG failed to fetch missing org tokens: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG <-- 200 https://api.fly.io/graphql (40.07s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (2.22s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1.96s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (2.34s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (5.77s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG result image:<nil> error:error building: failed to solve: Canceled: failed to load LLB: context canceled
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation FinishBuild ($input: FinishBuildInput!) {\n\tfinishBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t\twallclockTimeMs\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "buildId": "6545233",
+      "builderMeta": {
+        "builderType": "depot.dev",
+        "buildkitEnabled": false,
+        "dockerVersion": "",
+        "platform": "",
+        "remoteAppName": "",
+        "remoteMachineId": ""
+      },
+      "clientMutationId": "",
+      "finalImage": {
+        "id": "",
+        "sizeBytes": 0,
+        "tag": ""
+      },
+      "logs": "error building: failed to solve: Canceled: failed to load LLB: context canceled",
+      "machineId": "",
+      "status": "failed",
+      "strategiesAttempted": [
+        {
+          "error": "error building: failed to solve: Canceled: failed to load LLB: context canceled",
+          "note": "",
+          "result": "failed",
+          "strategy": "depot.dev"
+        }
+      ],
+      "timings": {
+        "buildAndPushMs": 412379,
+        "buildMs": 425736,
+        "builderInitMs": 9069,
+        "contextBuildMs": -1,
+        "imageBuildMs": 425734,
+        "pushMs": -1
+      }
+    }
+  },
+  "operationName": "FinishBuild"
+}
+
+DEBUG {0x40006acc60}
+DEBUG <-- 200 https://api.fly.io/graphql (5.24s)
+
+DEBUG {
+  "data": {
+    "finishBuild": {
+      "id": "6545233",
+      "status": "failed",
+      "wallclockTimeMs": 429109
+    }
+  }
+}
+
+DEBUG trying remote docker daemon
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation CreateBuild ($input: CreateBuildInput!) {\n\tcreateBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderType": "depot.dev",
+      "clientMutationId": "",
+      "imageOpts": {
+        "buildArgs": {},
+        "buildPacks": null,
+        "builder": "",
+        "builtIn": "",
+        "builtInSettings": null,
+        "dockerfilePath": "",
+        "extraBuildArgs": null,
+        "imageLabel": "",
+        "imageRef": "",
+        "noCache": false,
+        "publish": true,
+        "tag": "registry.fly.io/vpn-elbana:deployment-01JZ13HGZQ0SWAJJC74K465615",
+        "target": ""
+      },
+      "machineId": "",
+      "strategiesAvailable": [
+        "depot.dev"
+      ]
+    }
+  },
+  "operationName": "CreateBuild"
+}
+
+DEBUG {0x4000891980}
+DEBUG <-- 200 https://api.fly.io/graphql (2.7s)
+
+DEBUG {
+  "data": {
+    "createBuild": {
+      "id": "6545434",
+      "status": "started"
+    }
+  }
+}
+
+DEBUG Trying 'depot.dev' strategy
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation EnsureDepotRemoteBuilder ($input: EnsureDepotRemoteBuilderInput!) {\n\tensureDepotRemoteBuilder(input: $input) {\n\t\tbuildId\n\t\tbuildToken\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "builderScope": "organization",
+      "clientMutationId": null,
+      "organizationId": null,
+      "region": ""
+    }
+  },
+  "operationName": "EnsureDepotRemoteBuilder"
+}
+
+DEBUG {0x400069f920}
+DEBUG <-- 200 https://api.fly.io/graphql (964.76ms)
+
+DEBUG {
+  "data": {
+    "ensureDepotRemoteBuilder": {
+      "buildId": "556gl4ggmf",
+      "buildToken": "13a6b8f9-45ff-45b1-9ef2-22ba4f08763d"
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (2.77s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG failed to fetch missing org tokens: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": EOF
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG <-- 200 https://api.fly.io/graphql (15.16s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG failed to fetch missing org tokens: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": EOF
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (5.55s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (5.26s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG <-- 200 https://api.fly.io/graphql (24.68s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (11.94s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG Attempting to upgrade authentication token
+DEBUG Request:https://api.fly.io/aaa/v1/.well-known/macfly/3p
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": dial tcp 37.16.19.234:4318: connect: connection refused
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG <-- 200 https://api.fly.io/graphql (15.17s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (719.42ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (758.41ms)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (4.18s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1.48s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1.58s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG <-- 200 https://api.fly.io/graphql (1.24s)
+
+DEBUG {
+  "data": {
+    "organizations": {
+      "nodes": [
+        {
+          "id": "m8Y4w6lakLYJ3IxRnJ48ML6Bb8UNB0Aml",
+          "slug": "personal",
+          "rawSlug": "mohamed-elbana",
+          "name": "Mohamed Elbana",
+          "type": "PERSONAL",
+          "paidPlan": true,
+          "billable": true,
+          "viewerRole": "admin",
+          "internalNumericId": "1155542"
+        }
+      ]
+    }
+  }
+}
+
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "query($admin: Boolean!) { organizations(admin: $admin) { nodes { id slug rawSlug name type paidPlan billable viewerRole internalNumericId } } }",
+  "variables": {
+    "admin": false
+  }
+}
+
+
+DEBUG {}
+DEBUG trace exportererrortraces export: context deadline exceeded: retry-able request failure: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+DEBUG result image:<nil> error:error building: failed to receive status: rpc error: code = Unavailable desc = error reading from server: read tcp 10.54.238.242:41958->149.248.212.172:443: read: connection reset by peer
+
+DEBUG --> POST https://api.fly.io/graphql
+
+DEBUG {
+  "query": "\nmutation FinishBuild ($input: FinishBuildInput!) {\n\tfinishBuild(input: $input) {\n\t\tid\n\t\tstatus\n\t\twallclockTimeMs\n\t}\n}\n",
+  "variables": {
+    "input": {
+      "appName": "vpn-elbana",
+      "buildId": "6545434",
+      "builderMeta": {
+        "builderType": "depot.dev",
+        "buildkitEnabled": false,
+        "dockerVersion": "",
+        "platform": "",
+        "remoteAppName": "",
+        "remoteMachineId": ""
+      },
+      "clientMutationId": "",
+      "finalImage": {
+        "id": "",
+        "sizeBytes": 0,
+        "tag": ""
+      },
+      "logs": "error building: failed to receive status: rpc error: code = Unavailable desc = error reading from server: read tcp 10.54.238.242:41958-\u003e149.248.212.172:443: read: connection reset by peer",
+      "machineId": "",
+      "status": "failed",
+      "strategiesAttempted": [
+        {
+          "error": "error building: failed to receive status: rpc error: code = Unavailable desc = error reading from server: read tcp 10.54.238.242:41958-\u003e149.248.212.172:443: read: connection reset by peer",
+          "note": "",
+          "result": "failed",
+          "strategy": "depot.dev"
+        }
+      ],
+      "timings": {
+        "buildAndPushMs": 982513,
+        "buildMs": 1046516,
+        "builderInitMs": 3756,
+        "contextBuildMs": -1,
+        "imageBuildMs": 1046514,
+        "pushMs": -1
+      }
+    }
+  },
+  "operationName": "FinishBuild"
+}
+
+DEBUG {0x40005124e0}
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": read tcp 10.54.238.242:37800->37.16.19.234:4318: read: software caused connection abort
+DEBUG Failed to update feature flags from LaunchDarkly: Get "https://clientsdk.launchdarkly.com/sdk/evalx/6557a71bbffb5f134b84b15c/contexts/eyJraW5kIjoibXVsdGkiLCJvcmdhbml6YXRpb24iOnsia2V5IjoiZmx5Y3RsIiwiaWQiOjExNTU1NDIsImFub255bW91cyI6dHJ1ZX0sInVzZXIiOnsia2V5IjoiZmx5Y3RsIiwiaWQiOjAsImFub255bW91cyI6dHJ1ZX19": read tcp 10.54.238.242:42480->199.232.81.55:443: read: software caused connection abort
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": dial tcp [2a09:8280:1::5b:aacb]:4318: connect: network is unreachable
+WARN failed to finish build in graphql: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+
+DEBUG failed to fetch missing org tokens: Post "https://api.fly.io/graphql": dial tcp: lookup api.fly.io: no such host
+DEBUG Attempting to upgrade authentication token
+DEBUG Request:https://api.fly.io/aaa/v1/.well-known/macfly/3p
+DEBUG failed to update discharge tokens: Post "https://api.fly.io/aaa/v1/.well-known/macfly/3p": dial tcp: lookup api.fly.io: no such host
+DEBUG trace exportererrortraces export: Post "http://fly-otel-collector-dev.fly.dev:4318/v1/traces": dial tcp: lookup fly-otel-collector-dev.fly.dev: no such host
+DEBUG Task manager done
+DEBUG done monitoring tokens
+DEBUG querying for host issues resulted to []
