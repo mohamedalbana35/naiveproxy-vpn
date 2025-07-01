@@ -11,8 +11,3 @@ NAIVE_CONFIG = "/app/config.json"
 
   [[services.ports]]
     port = 443
-
-  [[services.tcp_checks]]
-    interval = "30s"
-    timeout = "5s"
-    restart_limit = 0
