@@ -6,4 +6,6 @@ COPY config.json /app/config.json
 COPY cert.pem /app/cert.pem
 COPY key.pem /app/key.pem
 
-ENV NAIVE_CONFIG /app/config.json
+ENV NAIVE_CONFIG=/app/config.json
+
+CMD ["/opt/naiveproxy/naive", "/app/config.json"]
